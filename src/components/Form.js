@@ -1,8 +1,9 @@
 import React, {useState} from 'react'
 
 
-export default function Form(prop) {
+export default function Form(props) {
     const [text,setText] = useState('');
+   
 
     function toUpper(){
         setText(text.toUpperCase());
@@ -40,10 +41,12 @@ export default function Form(prop) {
     }
     
 
+
+
   return (
     <>
     <div className='container my-4'>
-        <h1 className='my-2'>{prop.heading}</h1>
+        <h1 className='my-2' style={{color:props.mode==='dark'?'white' : 'black'}}>{props.heading}</h1>
      <div className="form-group ">
      
        <textarea className="form-control" value={text} onChange={setonChange} rows={8} defaultValue={""} placeholder='Enter your text here!' id='textarea'/>
@@ -60,7 +63,7 @@ export default function Form(prop) {
     </div>
 
     <div className="container my-1">
-        <h2>Text Summary</h2>
+        <h2 style={{color:props.mode==='dark'?'white' : 'black'}}>Text Summary</h2>
        <p className='text-primary'>Total Words: { text.split(' ').length}</p>
        <p className='text-danger'>Total Characters: {text.length}</p>
     </div>
