@@ -7,14 +7,17 @@ export default function Form(props) {
 
     function toUpper(){
         setText(text.toUpperCase());
+        props.alert('success','text converted to upper case successfully');
     }
 
     function toLower(){
         setText(text.toLowerCase());
+        props.alert('success','text converted to lower case successfully');
     }
 
     function clear(){
         setText("");
+        props.alert('success','text clear successfully');
     }
 
     function speech(){
@@ -27,20 +30,23 @@ export default function Form(props) {
         speakData.lang = 'en';
         speakData.voice= voice[0];
         speechSynthesis.speak(speakData);
+        props.alert('success','Speach to text allow successfully');
     }
 
     function copyText(){
       let val = document.getElementById('textarea');
       val.select();
       navigator.clipboard.writeText(val.value);
-      alert('Text copied successfully');
+      props.alert('success','text copied successfully');
     }
 
     const setonChange = (event)=>{
         setText(event.target.value);
     }
     
-
+    function removeSpace(word){
+      return word !== '';
+    }
 
 
   return (
@@ -64,7 +70,7 @@ export default function Form(props) {
 
     <div className="container my-1">
         <h2 style={{color:props.mode==='dark'?'white' : 'black'}}>Text Summary</h2>
-       <p className='text-primary'>Total Words: { text.split(' ').length}</p>
+       <p className='text-primary'>Total Words: { text.split(' ').filter(removeSpace).length}</p>
        <p className='text-danger'>Total Characters: {text.length}</p>
     </div>
     </>
