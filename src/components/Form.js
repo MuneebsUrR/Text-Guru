@@ -7,17 +7,25 @@ export default function Form(props) {
 
     function toUpper(){
         setText(text.toUpperCase());
+
+        if(text!=='')
         props.alert('success','text converted to upper case successfully');
+        else alert('First enter some text!')
     }
 
     function toLower(){
         setText(text.toLowerCase());
+        if(text!=='')
         props.alert('success','text converted to lower case successfully');
+        else alert('First enter some text!')
     }
 
     function clear(){
         setText("");
+
+        if(text!=='')
         props.alert('success','text clear successfully');
+        else alert('First enter some text!')
     }
 
     function speech(){
@@ -30,14 +38,20 @@ export default function Form(props) {
         speakData.lang = 'en';
         speakData.voice= voice[0];
         speechSynthesis.speak(speakData);
+
+        if(text!=='')
         props.alert('success','Speach to text allow successfully');
+        else alert('First enter some text!')
     }
 
     function copyText(){
       let val = document.getElementById('textarea');
       val.select();
       navigator.clipboard.writeText(val.value);
+
+      if(text!=='')
       props.alert('success','text copied successfully');
+      else alert('First enter some text!')
     }
 
     function removeExtraSpaces(){
@@ -45,6 +59,10 @@ export default function Form(props) {
      setText(
        text.replace(regexPattern," ")
      )
+
+     if(text!=='')
+     props.alert('success','Spaces removed successfully');
+     else alert('First enter some text!')
 
     }
 
@@ -80,7 +98,7 @@ export default function Form(props) {
 
     <div className="container my-1">
         <h2 style={{color:props.mode==='dark'?'white' : 'black'}}>Text Summary</h2>
-       <p className='text-primary'>Total Words: { text.split(' ').filter(removeSpace).length}</p>
+       <p className='text-primary'>Total Words: { text.split(/\s+/).filter(removeSpace).length}</p>
        <p className='text-danger'>Total Characters: {text.length}</p>
     </div>
     </>
