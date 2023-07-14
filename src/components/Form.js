@@ -40,6 +40,14 @@ export default function Form(props) {
       props.alert('success','text copied successfully');
     }
 
+    function removeExtraSpaces(){
+      let regexPattern = /\s+/g;
+     setText(
+       text.replace(regexPattern," ")
+     )
+
+    }
+
     const setonChange = (event)=>{
         setText(event.target.value);
     }
@@ -48,6 +56,7 @@ export default function Form(props) {
       return word !== '';
     }
 
+    
 
   return (
     <>
@@ -64,6 +73,7 @@ export default function Form(props) {
     <button className="btn btn-info m-2" onClick={toLower}>Convert To LowerCase</button>
     <button className="btn btn-success m-2" onClick={speech}>Text To Speech</button>
     <button className='btn btn-warning m-2' onClick={copyText}>Copy Text</button>
+    <button className='btn btn-secondary m-2' onClick={removeExtraSpaces}>Remove extra spaces</button>
     <button className='btn btn-danger m-2' onClick={clear}>Clear</button>
     </div>
     </div>
