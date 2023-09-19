@@ -3,3 +3,64 @@
   width: 400px;
   float: right;
 }
+.home{
+  background-color: whitesmoke;
+}
+
+#heading{
+  font-family: 'Dancing Script', cursive;
+  color: #27374D;
+}
+
+li{
+  list-style-type:none;
+}
+
+
+
+
+.link, .BrandLink{
+  width: max-content;
+  position: relative;
+  color: white;
+
+}
+.link:hover{
+  text-decoration: none;
+  color: rgb(203, 203, 203);
+}
+.BrandLink:hover{
+  text-decoration: none;
+  color: rgb(203, 203, 203);
+}
+
+textarea{
+  color: rgb(207, 71, 71);
+}
+.link::after{
+  content: "";
+  position: absolute;
+  bottom: -7px;
+  height: 4px;
+  width: 100%;
+  left: 0;
+  background-color: #DDE6ED;
+  transition: 0.3s ease-in-out;
+  transform: scaleX(0);
+}
+.link:hover::after{
+  transform: scaleX(1);
+}
+body{
+  background-color: #DDE6ED;
+}
+nav{
+  background-color: #526D82;
+}
+
+@media only screen and (max-width: 480px) {
+ #heading{
+  font-size: x-large;
+  text-align: center;
+ }
+}
