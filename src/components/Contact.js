@@ -1,5 +1,5 @@
 
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
 
 export default function Contact(props) {
@@ -24,7 +24,11 @@ export default function Contact(props) {
         }
       );
   };
-
+  
+  useEffect(() => {
+    document.title = "Text Guru-Contact"
+    
+  }, );
   return (
     <>
       <div className="container contact-form">

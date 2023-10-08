@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Summary from './Summary';
 
 const Utility = (props) => {
@@ -69,7 +69,10 @@ const Utility = (props) => {
     setText(event.target.value);
   }
 
-
+  useEffect(() => {
+    document.title = "Text Guru- Text Utility"
+    
+  }, );
 
   return (
     <div className='home container my-4'>
