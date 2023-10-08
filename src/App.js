@@ -1,7 +1,7 @@
 
 import './App.css';
 import Navbar from './components/Navbar';
-import Forms from './components/Form';
+
 import Alerts from './components/Alerts';
 import Contact from './components/Contact';
  import React, { useState } from 'react'
@@ -9,7 +9,7 @@ import Contact from './components/Contact';
   Routes,
   Route,
 } from "react-router-dom";
-import Paraphrase from './components/Paraphrase';
+
 import Utility from './components/Utility';
 import Home from './components/Home';
 
@@ -17,12 +17,10 @@ import Home from './components/Home';
 
 function App() {
 
-  const [mode, setmode] = useState('light');
   const [alert, setalert] = useState({});
 
-  
-
-
+  const apiKey = process.env.REACT_PARAPHRASING_API_KEY;
+console.log(apiKey);
 
   const showAlert = (type, msg)=>{
 
@@ -34,35 +32,20 @@ function App() {
 
     setTimeout(()=>{
       setalert({});
-    },1200 )
+    },1500 )
   }
-
-  // function handleModeonClick(){ //function to enable dark mode
-  //   if(mode==='light'){
-  //     setmode('dark');
-  //     document.body.style.backgroundColor='black'; 
-  //     showAlert('success','Dark mode enabled successfully');
-  //   }
-  //   else{
-  //     setmode('light') ;
-  //     document.body.style.backgroundColor='white';
-  //     showAlert('success','Light mode enabled successfully');
-  //   }
-
-   
-  // }
   
   return (
   <>
 
-     <Navbar title="Text Helper"/>
+     <Navbar title="Text Guru"/>
      <Alerts alert={alert}/>
      
          
         <Routes>
-          <Route exact path="/" element={  <Home  alert = {showAlert} /> } />
-          <Route exact path="/contact" element = {  <Contact mode={mode}/>}/>
-          <Route exact path="/utility" element = {  <Utility heading="Enter Your Text to Analyze" alert = {showAlert}/>}/>
+          <Route exact path="/" element={  <Home apiKey={apiKey} alert = {showAlert} /> } />
+          <Route exact path="/contact" element = {  <Contact alert = {showAlert}/>}/>
+          <Route exact path="/utility" element = {  <Utility alert = {showAlert}/>}/>
         </Routes>
      
   </>

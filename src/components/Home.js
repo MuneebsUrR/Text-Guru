@@ -1,12 +1,12 @@
-import React, {  useState } from 'react'
+import React from 'react'
 import '../App.css'
 import Paraphrase from './Paraphrase';
-import Summary from './Summary';
+
 
 const Home = (props) => {
     return (
         <div>
-          <Paraphrase alert={props.alert} />
+          <Paraphrase apiKey={props.apiKey}  alert={props.alert} />
         </div>
     );
 }

@@ -4,13 +4,15 @@ import Summary from './Summary';
 const Paraphrase = (props) => {
     const [normalText, setnormalText] = useState('');
     const [paraphraseText, setparaphraseText] = useState('');
+    const [isSubmitting, setIsSubmitting] = useState(false);
+
     const paraphrase = async () => {
         const url = 'https://rewriter-paraphraser-text-changer-multi-language.p.rapidapi.com/rewrite';
     const options = {
         method: 'POST',
         headers: {
             'content-type': 'application/json',
-            'X-RapidAPI-Key': '58ce39cc1amsha4354a3355d61d5p15a347jsn0f6c11dcc7da',
+            'X-RapidAPI-Key': props.apiKey,
             'X-RapidAPI-Host': 'rewriter-paraphraser-text-changer-multi-language.p.rapidapi.com'
         },
         body: JSON.stringify({
@@ -23,11 +25,14 @@ if(normalText.length>0){
 
 
     try {
+        setIsSubmitting(true);
         const response = await fetch(url, options);
         const result = await response.json();
         
         setparaphraseText(result.rewrite);
-        props.alert('success','You text paraphrased successfully :)')
+        props.alert('success','Your text paraphrased successfully :)');
+        setIsSubmitting(false);
+        
     } catch (error) {
         console.error(error);
     }
@@ -45,6 +50,8 @@ if(normalText.length>0){
           props.alert('success', 'text copied successfully');
         else alert('First enter some text!')
       }
+
+   
     return (
        
         <div className='container my-5 paraphraser-section'>
@@ -56,9 +63,9 @@ if(normalText.length>0){
                 Normal Text
                 <hr />
                
-                <textarea className='form-control' name="simpletext" value={normalText} onChange={(e)=>setnormalText(e.target.value)} cols="28" rows="10" style={{overflow:'auto'}}></textarea>
+                <textarea className='form-control' name="simpletext" value={normalText} onChange={(e)=>setnormalText(e.target.value)} cols="28" rows="8" style={{overflow:'auto'}} ></textarea>
                
-                <button  className={`btn ${normalText.length>=10000?'btn-outline-danger':'btn-outline-dark'}  my-3`} id='paraphrase-button' onClick={paraphrase} disabled={normalText.length>=10000?true:false } >Paraphrase Text</button>
+                <button  className={`btn ${normalText.length>=10000?'btn-outline-danger':'btn-outline-dark'}  my-3`} id='paraphrase-button' onClick={paraphrase} disabled={normalText.length>=10000?true:false  || isSubmitting } >Paraphrase Text</button>
                
                </div>
             
@@ -69,7 +76,7 @@ if(normalText.length>0){
                 <div className="header text-secondary text-center ">
                    <span className="paraphrase-text">Paraphrase Text</span> 
                     <hr />
-                    <textarea id='paraphrasetextarea' className='form-control' name="simpletext" value={paraphraseText} onChange={(e)=>setparaphraseText(e.target.value)} cols="28" rows="10" style={{overflow:'auto'}}></textarea>
+                    <textarea id='paraphrasetextarea' className='form-control' name="simpletext" value={paraphraseText} onChange={(e)=>setparaphraseText(e.target.value)} cols="28" rows="8" style={{overflow:'auto'}}></textarea>
                 </div>
                 <div className="copy-button text-center">
                 <button className='btn btn-outline-success my-3 ' onClick={copyText}>copy text</button>

@@ -1,13 +1,22 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import '../App.css'
 const Summary = (props) => {
-    function removeSpace(word) {
-        return word !== '';
-    }
+    const [words, setwords] = useState(10000);
+    useEffect(() => {
+        
 
-    return (
+   setTimeout(() => {
+       setwords(props.text.length);
+   }, 300);
+   
+}, );
+
+function removeSpace(word) {
+    return word !== '';
+}
+return (
         <div >
             <h3 id='heading' className='container my-3 text-center'>Text Summary</h3>
 
@@ -19,7 +28,7 @@ const Summary = (props) => {
                         textSize: "14px",
                         textColor:'#526D82',
                         pathColor:'#27374D' ,
-                    })} value={props.text.length} maxValue={10000} text={`${props.text.length}/10000`} />
+                    })} value={words===0 ? props.text.length: words} maxValue={10000} text={`${props.text.length}/10000`} />
                 </div>
                 <div className="d-flex align-items-center justify-content-center text-white mx-4" style={{ backgroundColor:'#27374D',width: 120, height: 120, borderRadius: '50%' }}>
                     {`Words: ${props.text.split(/\s+/).filter(removeSpace).length}`}

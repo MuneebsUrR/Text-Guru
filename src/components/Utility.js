@@ -73,7 +73,7 @@ const Utility = (props) => {
   
     return (
         <div className='home container my-4'>
-        <h2 id='heading' className='my-2' >{props.heading}</h2>
+        <h2 id='heading' className='my-5' >Enter Your Text to Analyze</h2>
         <div className="form-group ">
 
           <textarea className="form-control" value={text} onChange={setonChange} rows={8} defaultValue={""} placeholder='Enter your text here!' id='textarea' />
@@ -90,7 +90,11 @@ const Utility = (props) => {
          
 
         </div>
-        <Summary text = {text}/>
+
+        <div className="summary my-4">
+        <Summary  text = {text}/>
+
+        </div>
       </div>
     );
 }
