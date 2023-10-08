@@ -32,7 +32,7 @@ export default function Contact(props) {
           Contact Us
         </h3>
         <form ref={form} onSubmit={sendEmail}>
-        <div className="form-group">
+          <div className="form-group">
             <label >Name</label>
             <input name='from_name' type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter full name" required />
             <label htmlFor="email">Email address</label>
@@ -41,12 +41,12 @@ export default function Contact(props) {
           </div>
           <label>Message</label>
           <textarea name="message" className='form-control my-2' rows="8" required></textarea>
-          
+
           <div>
             <button className="btn btn-primary" type="submit" disabled={isSubmitting}>
               Submit
             </button>
-           
+
           </div>
         </form>
       </div>

@@ -1,41 +1,45 @@
-#alertbox{
+#alertbox {
   position: relative;
   width: 400px;
   float: right;
 }
 
 
-#heading{
+#heading {
   font-family: 'Dancing Script', cursive;
   color: #27374D;
 }
 
-li{
-  list-style-type:none;
+li {
+  list-style-type: none;
 }
 
 
 
 
-.link, .BrandLink{
+.link,
+.BrandLink {
   width: max-content;
   position: relative;
   color: white;
 
 }
-.link:hover{
-  text-decoration: none;
-  color: rgb(203, 203, 203);
-}
-.BrandLink:hover{
+
+.link:hover {
   text-decoration: none;
   color: rgb(203, 203, 203);
 }
 
-textarea{
+.BrandLink:hover {
+  text-decoration: none;
+  color: rgb(203, 203, 203);
+}
+
+textarea {
   color: rgb(207, 71, 71);
 }
-.link::after{
+
+.link::after {
   content: "";
   position: absolute;
   bottom: -7px;
@@ -46,19 +50,22 @@ textarea{
   transition: 0.3s ease-in-out;
   transform: scaleX(0);
 }
-.link:hover::after{
+
+.link:hover::after {
   transform: scaleX(1);
 }
-body{
+
+body {
   background-color: #DDE6ED;
 }
-nav{
+
+nav {
   background-color: #526D82;
 }
 
 @media only screen and (max-width: 480px) {
- #heading{
-  font-size: x-large;
-  text-align: center;
- }
+  #heading {
+    font-size: x-large;
+    text-align: center;
+  }
 }

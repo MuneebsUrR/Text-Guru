@@ -4,8 +4,8 @@ import Navbar from './components/Navbar';
 
 import Alerts from './components/Alerts';
 import Contact from './components/Contact';
- import React, { useState } from 'react'
- import {
+import React, { useState } from 'react'
+import {
   Routes,
   Route,
 } from "react-router-dom";
@@ -19,36 +19,36 @@ function App() {
 
   const [alert, setalert] = useState({});
 
-  const apiKey = process.env.REACT_PARAPHRASING_API_KEY;
-console.log(apiKey);
+  const apiKey = process.env.REACT_APP_PARAPHRASING_API_KEY;
 
-  const showAlert = (type, msg)=>{
+
+  const showAlert = (type, msg) => {
 
     setalert({
-      alertType:type,
-      message:msg,
-      iconTag : <i class="fa fa-check-circle-o mx-2" aria-hidden="true"></i>,
+      alertType: type,
+      message: msg,
+      iconTag: <i className="fa fa-check-circle-o mx-2" aria-hidden="true"></i>,
     })
 
-    setTimeout(()=>{
+    setTimeout(() => {
       setalert({});
-    },1500 )
+    }, 1500)
   }
-  
-  return (
-  <>
 
-     <Navbar title="Text Guru"/>
-     <Alerts alert={alert}/>
-     
-         
-        <Routes>
-          <Route exact path="/" element={  <Home apiKey={apiKey} alert = {showAlert} /> } />
-          <Route exact path="/contact" element = {  <Contact alert = {showAlert}/>}/>
-          <Route exact path="/utility" element = {  <Utility alert = {showAlert}/>}/>
-        </Routes>
-     
-  </>
+  return (
+    <>
+
+      <Navbar title="Text Guru" />
+      <Alerts alert={alert} />
+
+
+      <Routes>
+        <Route exact path="/" element={<Home apiKey={apiKey} alert={showAlert} />} />
+        <Route exact path="/contact" element={<Contact alert={showAlert} />} />
+        <Route exact path="/utility" element={<Utility alert={showAlert} />} />
+      </Routes>
+
+    </>
   );
 }
 
